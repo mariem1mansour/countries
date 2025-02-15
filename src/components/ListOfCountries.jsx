@@ -1,25 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import SearchCountries from "./SearchCountries";
 
 const ListOfCountries = () => {
   const [countries, setCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const response = await axios.get("https://restcountries.com/v3.1/all");
+        setCountries(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  const fetchCountries = async () => {
-    try {
-      const response = await axios.get("https://restcountries.com/v3.1/all");
-      setCountries(response.data);
-    } catch (error) {
-      console.log(error);
+    fetchCountries();
+  }, []);
+  const handleSearch = (query) => {
+    if (!query) {
+      setFilteredCountries(countries);
+    } else {
+      const filtered = countries.filter((country) =>
+        country.name.common.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredCountries(filtered);
     }
   };
-
-  fetchCountries();
-
   return (
     <div className="container mt-4">
       <h1 className="text-center mb-4">List of Countries</h1>
+      <SearchCountries onSearch={handleSearch} />
       <div className="row">
-        {countries.map((country) => (
+        {filteredCountries.map((country) => (
           <div key={country.cca3} className="col-md-4 mb-4">
             <div className="card shadow-lg">
               <img
