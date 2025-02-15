@@ -1,8 +1,19 @@
-# React + Vite
+# 🌍 List of Countries App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple **React** application that fetches country data from the [REST Countries API](https://restcountries.com/v3.1/all) and displays information about each country.  
+It includes a **search feature** to filter countries by name and a **reset button** for easy navigation.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ Fetches and displays country data from an API  
+✅ Search bar to filter countries by name  
+✅ Reset button appears when typing  
+✅ Bootstrap styling for a clean UI  
+✅ Beginner-friendly and easy to understand
+
+## 🛠 Tech Stack
+
+- **React.js** (Functional Components, Hooks)
+- **Axios** (For API requests)
+- **Bootstrap** (For styling)
+- **REST Countries API** (For country data)
